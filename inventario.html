@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Módulo de Inventario</h1>
+            <a href="panel.html" class="btn">Volver al Panel</a>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="busqueda" placeholder="Buscar producto por nombre...">
+            </div>
+            
+            <div class="filter-box">
+                <select id="filtroCategoria">
+                    <option value="">Todas las categorías</option>
+                </select>
+            </div>
+
+            <div class="sort-box">
+                <select id="ordenPrecio">
+                    <option value="">Ordenar por precio</option>
+                    <option value="asc">Menor a Mayor</option>
+                    <option value="desc">Mayor a Menor</option>
+                </select>
+            </div>
+
+            <button id="cargarAPI" class="btn btn-primary">Cargar Productos de API</button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">Cargando productos...</div>
+
+        <table id="inventarioTable" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="inventarioBody"></tbody>
+        </table>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/inventario.js"></script>
+</body>
+</html>

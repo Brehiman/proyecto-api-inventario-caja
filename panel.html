@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Panel Principal</h1>
+            <div class="user-info">
+                <span id="nombreUsuario"></span>
+                <button id="logoutBtn" class="btn btn-danger">Cerrar Sesión</button>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2>Módulo de Inventario</h2>
+                <p>Gestionar productos y stock</p>
+                <a href="inventario.html" class="btn btn-primary">Ir al Inventario</a>
+            </div>
+
+            <div class="card">
+                <h2>Módulo de Caja</h2>
+                <p>Realizar ventas y gestionar carrito</p>
+                <a href="caja.html" class="btn btn-primary">Ir a Caja</a>
+            </div>
+
+            <div class="card">
+                <h2>Historial de Ventas</h2>
+                <p>Ver todas las ventas realizadas</p>
+                <a href="ventas.html" class="btn btn-primary">Ver Historial</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/panel.js"></script>
+</body>
+</html>

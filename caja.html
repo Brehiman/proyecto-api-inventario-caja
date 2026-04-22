@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Módulo de Caja</h1>
+            <a href="panel.html" class="btn">Volver al Panel</a>
+        </div>
+
+        <div class="caja-container">
+            <div class="productos-disponibles">
+                <h2>Productos Disponibles</h2>
+                <div class="search-box">
+                    <input type="text" id="busquedaProducto" placeholder="Buscar producto...">
+                </div>
+                <div id="productosGrid" class="productos-grid"></div>
+            </div>
+
+            <div class="carrito">
+                <h2>Carrito de Compras</h2>
+                <div id="carritoItems"></div>
+                <div class="carrito-total">
+                    <h3>Total: $<span id="totalCarrito">0.00</span></h3>
+                    <button id="confirmarVenta" class="btn btn-success">Confirmar Venta</button>
+                    <button id="cancelarVenta" class="btn btn-danger">Cancelar Venta</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="comprobanteModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>Comprobante de Venta</h2>
+                <div id="comprobanteContenido"></div>
+                <button id="cerrarComprobante" class="btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/caja.js"></script>
+</body>
+</html>

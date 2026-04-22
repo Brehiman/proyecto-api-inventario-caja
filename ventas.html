@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Ventas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Historial de Ventas</h1>
+            <a href="panel.html" class="btn">Volver al Panel</a>
+        </div>
+
+        <div class="ventas-container">
+            <table id="ventasTable" class="table">
+                <thead>
+                    <tr>
+                        <th>ID Venta</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody id="ventasBody"></tbody>
+            </table>
+        </div>
+
+        <div id="detalleModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>Detalle de Venta</h2>
+                <div id="detalleContenido"></div>
+                <button id="cerrarDetalle" class="btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ventas.js"></script>
+</body>
+</html>
