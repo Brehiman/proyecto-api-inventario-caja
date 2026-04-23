@@ -10,10 +10,10 @@ class InventarioManager {
 
     cargarPermisos() {
         if (!this.sesionActiva) return [];
-        
+
         const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
         const usuario = usuarios.find(u => u.id === this.sesionActiva.id);
-        
+
         if (usuario) {
             const roles = {
                 ADMINISTRADOR: {
@@ -29,7 +29,7 @@ class InventarioManager {
                     permisos: ['ver_inventario']
                 }
             };
-            
+
             const rolConfig = Object.values(roles).find(r => r.id === usuario.rol);
             return rolConfig ? rolConfig.permisos : [];
         }
@@ -61,10 +61,10 @@ class InventarioManager {
         try {
             const productosAPI = await apiManager.obtenerProductos();
             const categoriasAPI = await apiManager.obtenerCategorias();
-            
+
             productosAPI.forEach(producto => {
                 const productoExistente = this.productos.find(p => p.id === producto.id);
-                
+
                 if (!productoExistente) {
                     this.productos.push({
                         id: producto.id,
@@ -79,7 +79,7 @@ class InventarioManager {
             });
 
             this.categorias = new Set(productosAPI.map(p => p.category));
-            
+
             this.guardarInventario();
             this.actualizarFiltroCategorias();
             this.aplicarFiltros();
@@ -93,7 +93,7 @@ class InventarioManager {
     actualizarFiltroCategorias() {
         const filtroCategoria = document.getElementById('filtroCategoria');
         filtroCategoria.innerHTML = '<option value="">Todas las categorías</option>';
-        
+
         this.categorias.forEach(categoria => {
             const option = document.createElement('option');
             option.value = categoria;
@@ -137,16 +137,16 @@ class InventarioManager {
 
         this.productosFiltrados.forEach(producto => {
             const row = tbody.insertRow();
-            
+
             // Determinar si el input de stock debe ser editable
-            const stockInput = this.tienePermiso('editar_inventario') 
+            const stockInput = this.tienePermiso('editar_inventario')
                 ? `<input type="number" 
                            id="stock-${producto.id}" 
                            value="${producto.stock}" 
                            min="0"
                            onchange="inventarioManager.modificarStock(${producto.id}, this.value)">`
                 : `<span>${producto.stock}</span>`;
-            
+
             row.innerHTML = `
                 <td>${producto.id}</td>
                 <td><img src="${producto.imagen}" alt="${producto.nombre}"></td>
@@ -167,7 +167,7 @@ class InventarioManager {
             this.mostrarInventario(); // Recargar para restaurar valor original
             return;
         }
-        
+
         const producto = this.productos.find(p => p.id === id);
         if (producto) {
             producto.stock = parseInt(nuevoStock);
@@ -209,9 +209,8 @@ class InventarioManager {
         }
 
         if (this.productos.length === 0) {
-            if (this.tienePermiso('editar_inventario')) {
-                this.cargarDesdeAPI();
-            }
+            console.log('🔄 Inventario vacío, cargando productos automáticamente...');
+            this.cargarDesdeAPI();
         } else {
             this.productos.forEach(p => this.categorias.add(p.categoria));
             this.actualizarFiltroCategorias();
